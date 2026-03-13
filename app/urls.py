@@ -27,6 +27,12 @@ urlpatterns = [
     ),
 
     path(
+    "superadmin/tasks/",
+    views.superadmin_tasks,
+    name="superadmin_tasks"
+    ),
+
+    path(
         "logout/",
         views.logout_view,
         name="logout"

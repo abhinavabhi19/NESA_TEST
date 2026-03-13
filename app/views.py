@@ -110,6 +110,24 @@ def create_user(request):
     )
 
 
+@login_required
+def superadmin_tasks(request):
+
+    if request.user.role != "SUPERADMIN":
+        return redirect("login")
+
+    tasks = Task.objects.select_related(
+        "assigned_to",
+        "assigned_by"
+    ).all()
+
+    return render(
+        request,
+        "superadmin/tasks.html",
+        {"tasks": tasks}
+    )
+
+
 
 
 def logout_view(request):

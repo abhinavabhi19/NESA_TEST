@@ -63,6 +63,12 @@
                         <i class="fa-solid fa-user-plus"></i>
                         Create User </a>
 
+                    <a href="{% url 'superadmin_tasks' %}"
+                        class="flex items-center gap-2 text-gray-300 hover:text-white transition">
+                        <i class="fa-solid fa-list-check"></i>
+                        Tasks
+                    </a>
+
                     <a href="{% url 'logout' %}"
                         class="flex items-center gap-2 text-red-400 hover:text-red-500 transition font-medium">
 
@@ -105,6 +111,15 @@
 
                 <i class="fa-solid fa-user-plus mr-2"></i>
                 Create User </a>
+
+
+            <a href="{% url 'superadmin_tasks' %}" class="block px-6 py-3 text-gray-300 hover:bg-gray-700">
+
+                <i class="fa-solid fa-list-check"></i>
+                Tasks
+
+            </a>
+
 
             <a href="{% url 'logout' %}" class="block px-6 py-3 text-red-400 hover:bg-gray-700">
 
