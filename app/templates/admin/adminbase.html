@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel</title>
+
+<!-- TailwindCSS -->
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- FontAwesome -->
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+<!-- NAVBAR -->
+
+<nav class="bg-indigo-700 shadow-lg">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="flex justify-between items-center h-16">
+
+<!-- Logo -->
+
+<div class="flex items-center space-x-3">
+
+<i class="fa-solid fa-user-tie text-white text-xl"></i>
+
+<span class="text-white font-semibold text-lg">
+Admin Panel
+</span>
+
+</div>
+
+<!-- Desktop Navigation -->
+
+<div class="hidden md:flex items-center space-x-6 text-sm">
+
+<a href="{% url 'admin_dashboard' %}"
+class="flex items-center gap-2 text-indigo-100 hover:text-white transition">
+
+<i class="fa-solid fa-chart-line"></i>
+Dashboard </a>
+
+<a href="{% url 'assign_task' %}"
+class="flex items-center gap-2 text-indigo-100 hover:text-white transition">
+
+<i class="fa-solid fa-plus-circle"></i>
+Assign Task </a>
+
+<a href="{% url 'admin_tasks' %}"
+class="flex items-center gap-2 text-indigo-100 hover:text-white transition">
+
+<i class="fa-solid fa-list-check"></i>
+My Tasks </a>
+
+<a href="{% url 'logout' %}"
+class="flex items-center gap-2 text-red-200 hover:text-white transition font-medium">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout </a>
+
+</div>
+
+<!-- Mobile Menu Button -->
+
+<div class="md:hidden">
+
+<button onclick="toggleMenu()" class="text-white">
+
+<i class="fa-solid fa-bars text-xl"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Mobile Menu -->
+
+<div id="mobileMenu" class="hidden md:hidden bg-indigo-800">
+
+<a href="{% url 'admin_dashboard' %}"
+class="block px-6 py-3 text-indigo-100 hover:bg-indigo-700">
+
+<i class="fa-solid fa-chart-line mr-2"></i>
+Dashboard </a>
+
+<a href="{% url 'assign_task' %}"
+class="block px-6 py-3 text-indigo-100 hover:bg-indigo-700">
+
+<i class="fa-solid fa-plus-circle mr-2"></i>
+Assign Task </a>
+
+<a href="{% url 'admin_tasks' %}"
+class="block px-6 py-3 text-indigo-100 hover:bg-indigo-700">
+
+<i class="fa-solid fa-list-check mr-2"></i>
+My Tasks </a>
+
+<a href="{% url 'logout' %}"
+class="block px-6 py-3 text-red-200 hover:bg-indigo-700">
+
+<i class="fa-solid fa-right-from-bracket mr-2"></i>
+Logout </a>
+
+</div>
+
+</nav>
+
+<!-- MAIN CONTENT -->
+
+<main class="flex-grow">
+
+<div class="max-w-7xl mx-auto px-6 py-8">
+
+{% block content %}
+
+{% endblock %}
+
+</div>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer class="bg-gray-900 text-gray-400 text-center py-4 text-sm">
+
+© 2026 Task Management System — Admin Panel
+
+</footer>
+
+<!-- MOBILE MENU SCRIPT -->
+
+<script>
+
+function toggleMenu() {
+
+const menu = document.getElementById("mobileMenu");
+
+menu.classList.toggle("hidden");
+
+}
+
+</script>
+
+</body>
+
+</html>

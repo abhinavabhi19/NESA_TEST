@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SuperAdmin Dashboard</title>
+
+    <!-- TailwindCSS -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <!-- NAVBAR -->
+
+    <nav class="bg-gray-900 shadow-lg">
+
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="flex justify-between items-center h-16">
+
+                <!-- Logo -->
+
+                <div class="flex items-center space-x-3">
+
+                    <i class="fa-solid fa-user-shield text-indigo-400 text-xl"></i>
+
+                    <span class="text-white font-semibold text-lg">
+                        SuperAdmin Panel
+                    </span>
+
+                </div>
+
+                <!-- Desktop Navigation -->
+
+                <div class="hidden md:flex items-center space-x-6 text-sm">
+
+                    <a href="{% url 'superadmin_dashboard' %}"
+                        class="flex items-center gap-2 text-gray-300 hover:text-white transition">
+
+                        <i class="fa-solid fa-chart-line"></i>
+                        Dashboard </a>
+
+                    <a href="{% url 'create_admin' %}"
+                        class="flex items-center gap-2 text-gray-300 hover:text-white transition">
+
+                        <i class="fa-solid fa-user-gear"></i>
+                        Create Admin </a>
+
+                    <a href="{% url 'create_user' %}"
+                        class="flex items-center gap-2 text-gray-300 hover:text-white transition">
+
+                        <i class="fa-solid fa-user-plus"></i>
+                        Create User </a>
+
+                    <a href="{% url 'logout' %}"
+                        class="flex items-center gap-2 text-red-400 hover:text-red-500 transition font-medium">
+
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        Logout </a>
+
+                </div>
+
+                <!-- Mobile Menu Button -->
+
+                <div class="md:hidden">
+
+                    <button onclick="toggleMenu()" class="text-gray-300">
+
+                        <i class="fa-solid fa-bars text-xl"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Mobile Menu -->
+
+        <div id="mobileMenu" class="hidden md:hidden bg-gray-800">
+
+            <a href="{% url 'superadmin_dashboard' %}" class="block px-6 py-3 text-gray-300 hover:bg-gray-700">
+
+                <i class="fa-solid fa-chart-line mr-2"></i>
+                Dashboard </a>
+
+            <a href="{% url 'create_admin' %}" class="block px-6 py-3 text-gray-300 hover:bg-gray-700">
+
+                <i class="fa-solid fa-user-gear mr-2"></i>
+                Create Admin </a>
+
+            <a href="{% url 'create_user' %}" class="block px-6 py-3 text-gray-300 hover:bg-gray-700">
+
+                <i class="fa-solid fa-user-plus mr-2"></i>
+                Create User </a>
+
+            <a href="{% url 'logout' %}" class="block px-6 py-3 text-red-400 hover:bg-gray-700">
+
+                <i class="fa-solid fa-right-from-bracket mr-2"></i>
+                Logout </a>
+
+        </div>
+
+    </nav>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="flex-grow">
+
+        <div class="max-w-7xl mx-auto px-6 py-8">
+
+            {% block content %}
+
+            {% endblock %}
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer class="bg-gray-900 text-gray-400 text-center py-4 text-sm">
+
+        © 2026 Task Management System — SuperAdmin Panel
+
+    </footer>
+
+    <!-- MOBILE MENU SCRIPT -->
+
+    <script>
+
+        function toggleMenu() {
+
+            const menu = document.getElementById("mobileMenu");
+
+            menu.classList.toggle("hidden");
+
+        }
+
+    </script>
+
+</body>
+
+</html>

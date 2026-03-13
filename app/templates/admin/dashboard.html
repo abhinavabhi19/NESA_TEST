@@ -1,0 +1,89 @@
+{% extends "admin/adminbase.html" %}
+
+{% block content %}
+
+<h1 class="text-2xl font-semibold text-gray-700 mb-6">
+    Admin Dashboard
+</h1>
+
+<!-- Stats -->
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+
+    <div class="bg-white shadow rounded-lg p-6 border-l-4 border-indigo-500">
+
+        <div class="flex justify-between items-center">
+
+            <div>
+                <p class="text-gray-500 text-sm">My Users</p>
+                <h2 class="text-2xl font-bold">{{ users.count }}</h2>
+            </div>
+
+            <i class="fa-solid fa-users text-indigo-500 text-2xl"></i>
+
+        </div>
+
+    </div>
+
+    <div class="bg-white shadow rounded-lg p-6 border-l-4 border-green-500">
+
+        <div class="flex justify-between items-center">
+
+            <div>
+                <p class="text-gray-500 text-sm">Tasks Created</p>
+                <h2 class="text-2xl font-bold">{{ tasks.count }}</h2>
+            </div>
+
+            <i class="fa-solid fa-list-check text-green-500 text-2xl"></i>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Users Table -->
+
+<div class="bg-white shadow rounded-lg p-6">
+
+    <h2 class="text-lg font-semibold mb-4">
+        Users Assigned to You
+    </h2>
+
+    <table class="w-full text-sm">
+
+        <thead>
+            <tr class="border-b text-gray-600">
+                <th class="text-left py-2">ID</th>
+                <th class="text-left py-2">Username</th>
+                <th class="text-left py-2">Created On</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for user in users %}
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="py-2">{{ user.id }}</td>
+                <td class="py-2">{{ user.username }}</td>
+                <td class="py-2">{{ user.date_joined|date:"Y-m-d H:i" }}</td>
+            </tr>
+
+            {% empty %}
+
+            <tr>
+                <td colspan="3" class="text-center py-4 text-gray-500">
+                    No users assigned
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "admin/adminbase.html" %}
+
+{% block content %}
+
+<h1 class="text-2xl font-semibold text-gray-700 mb-6">
+    My Tasks
+</h1>
+
+<div class="bg-white shadow rounded-lg p-6">
+
+    <table class="w-full text-sm">
+
+        <thead>
+
+            <tr class="border-b text-gray-600">
+
+                <th class="text-left py-2">Title</th>
+                <th class="text-left py-2">User</th>
+                <th class="text-left py-2">Status</th>
+                <th class="text-left py-2">Due Date</th>
+                <th class="text-left py-2">User Replay</th>
+                <th class="text-left py-2">Worked Hours</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for task in tasks %}
+
+            <tr class="border-b hover:bg-gray-50">
+
+                <td class="py-2">{{ task.title }}</td>
+
+                <td class="py-2">{{ task.assigned_to.username }}</td>
+
+                <td class="py-2">
+
+                    {% if task.status == "COMPLETED" %}
+
+                    <span class="text-green-600 font-medium">
+                        Completed
+                    </span>
+
+                    {% elif task.status == "IN_PROGRESS" %}
+
+                    <span class="text-blue-600 font-medium">
+                        In Progress
+                    </span>
+
+                    {% else %}
+
+                    <span class="text-yellow-600 font-medium">
+                        Pending
+                    </span>
+
+                    {% endif %}
+
+                </td>
+
+                <td class="py-2">{{ task.due_date }}</td>
+
+                {% if task.completion_report %}
+                <td class="py-2">{{ task.completion_report }}</td>
+                {% else %}
+                <td class="py-2">Not Reported</td>
+                {% endif %}
+
+                {% if task.worked_hours %}
+                <td class="py-2">{{ task.worked_hours }}</td>
+                {% else %}
+                <td class="py-2">Not Reported</td>
+                {% endif %}
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+
+                <td colspan="4" class="text-center py-4 text-gray-500">
+                    No tasks created
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

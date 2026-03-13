@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Dashboard</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <nav class="bg-blue-700">
+
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="flex justify-between items-center h-16">
+
+                <span class="text-white font-semibold text-lg">
+                    User Panel
+                </span>
+
+                <div class="flex gap-6 text-white">
+
+                    <a href="{% url 'user_dashboard' %}">
+                        Dashboard
+                    </a>
+
+                    <a href="{% url 'logout' %}">
+                        Logout
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <div class="max-w-7xl mx-auto p-6">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+
+</body>
+
+</html>
