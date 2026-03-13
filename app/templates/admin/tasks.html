@@ -61,17 +61,10 @@
 
                 <td class="py-2">{{ task.due_date }}</td>
 
-                {% if task.completion_report %}
                 <td class="py-2">{{ task.completion_report }}</td>
-                {% else %}
-                <td class="py-2">Not Reported</td>
-                {% endif %}
 
-                {% if task.worked_hours %}
+                
                 <td class="py-2">{{ task.worked_hours }}</td>
-                {% else %}
-                <td class="py-2">Not Reported</td>
-                {% endif %}
 
             </tr>
 
